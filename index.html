@@ -3,42 +3,186 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <title>Paracel | Fumigaciones</title>
+  <title>Paracel | Central de Servicios</title>
 
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --green: #176044;
+      --ink: #17251f;
+      --muted: #65736b;
+      --background: #f4f7f5;
+      --line: #dfe8e2;
     }
 
-    html,
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #ffffff;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 10% 0%, #e0f0e6, transparent 35%),
+        var(--background);
     }
 
-    iframe {
-      position: fixed;
-      inset: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-      height: 100dvh;
-      border: 0;
-      background: #ffffff;
+    header {
+      padding: 20px clamp(20px, 6vw, 72px);
+      background: rgba(255, 255, 255, .88);
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    main {
+      width: min(1050px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 75px 0 40px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(30px, 5vw, 50px);
+      line-height: 1.1;
+      letter-spacing: -.04em;
+    }
+
+    h1 span { color: var(--green); }
+
+    .hero p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-height: 230px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: white;
+      color: inherit;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(20, 50, 34, .04);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(20, 50, 34, .10);
+    }
+
+    .number {
+      margin-bottom: 26px;
+      color: #75867b;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .action {
+      margin-top: auto;
+      padding-top: 24px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    footer {
+      margin-top: 35px;
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
+      color: #7a887f;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      main { padding-top: 45px; }
+      .grid { grid-template-columns: 1fr; }
+      .card { min-height: 190px; }
+      .hero { text-align: left; }
     }
   </style>
 </head>
 
 <body>
-  <iframe
-    src="https://script.google.com/macros/s/AKfycbx92xKpyG4iZLNN1qLIQpia_RzuAHcF_swAt8hB_UMQd-iilr4b0j4_0qBB4rUsUBtv/exec?vista=mapa"
-    title="Panel de Fumigaciones de Paracel"
-    allowfullscreen>
-  </iframe>
+  <header>PARACEL · CENTRAL DE SERVICIOS</header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Centro de operaciones</div>
+      <h1>
+        PANEL DE CONTROL ONLINE<br>
+        <span>CENTRAL DE SERVICIOS</span>
+      </h1>
+      <p>Seleccioná un panel para continuar.</p>
+    </section>
+
+    <section class="grid">
+      <a class="card" href="./fumigaciones.html">
+        <div class="number">01 / FUMIGACIÓN</div>
+        <h2>Fumigaciones</h2>
+        <p class="description">
+          Consultá el mapa de calor y la distribución de los servicios.
+        </p>
+        <div class="action">Abrir Fumigaciones →</div>
+      </a>
+
+      <a class="card" href="./limpieza.html">
+        <div class="number">02 / LIMPIEZA</div>
+        <h2>Limpieza</h2>
+        <p class="description">
+          Consultá las áreas atendidas y la actividad registrada.
+        </p>
+        <div class="action">Abrir Limpieza →</div>
+      </a>
+
+      <a class="card" href="./mediciones.html">
+        <div class="number">03 / MEDICIONES</div>
+        <h2>Mediciones de Servicios Básicos</h2>
+        <p class="description">
+          Consultá el dashboard de mediciones de los servicios.
+        </p>
+        <div class="action">Abrir Mediciones →</div>
+      </a>
+    </section>
+
+    <footer>Paracel · Panel de Control Online</footer>
+  </main>
 </body>
 </html>
