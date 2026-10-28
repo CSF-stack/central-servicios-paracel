@@ -189,7 +189,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
     }
 
@@ -341,6 +341,12 @@
       color: #88938d;
       font-size: 10px;
       letter-spacing: .035em;
+    }
+
+    @media (max-width: 1100px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 850px) {
@@ -539,6 +545,38 @@
 
         <div class="tile-action">
           <span>Abrir datos de mediciones</span>
+          <span class="arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- PANEL 4: CONTROL DE MALEZAS -->
+      <a class="tile" href="./malezas.html">
+        <div class="tile-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21V11"/>
+            <path d="M12 15C7.5 15 5 12.5 5 8c4.7 0 7 2.4 7 7Z"/>
+            <path d="M12 11c0-4.1 2.2-6.5 6.5-6.5 0 4.4-2.2 6.5-6.5 6.5Z"/>
+            <path d="M7 21h10"/>
+          </svg>
+        </div>
+
+        <div class="tile-number">04 / MALEZAS</div>
+        <h3>Control de Malezas</h3>
+        <p>
+          Consultá las habitaciones y áreas registradas
+          para el seguimiento del control de malezas.
+        </p>
+
+        <div class="tile-action">
+          <span>Abrir mapa de malezas</span>
           <span class="arrow" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2"
