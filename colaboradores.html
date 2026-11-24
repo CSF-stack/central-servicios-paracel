@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a22">
+  <title>Paracel | Contratistas y Dotación</title>
+
+  <style>
+    :root {
+      --ink: #17251f;
+      --muted: #6b7771;
+      --forest: #123c2e;
+      --forest-2: #1e6549;
+      --paper: #f4f7f5;
+      --line: #dfe8e2;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    .topbar {
+      height: 60px;
+      padding: 0 clamp(14px, 4vw, 32px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border-bottom: 1px solid rgba(221, 232, 225, .9);
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(14px);
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 12px;
+      border: 1px solid #d6e5dc;
+      border-radius: 999px;
+      background: #f9fcfa;
+      color: var(--forest);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .15s ease, border-color .15s ease;
+    }
+
+    .back-btn:hover {
+      background: #edf7f0;
+      border-color: #b6d8c3;
+    }
+
+    .back-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      background: linear-gradient(145deg, #1e6549, #0d3025);
+      flex-shrink: 0;
+    }
+
+    .brand-mark svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .page-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .page-sub {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .frame-wrap {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 60px);
+      height: calc(100dvh - 60px);
+      background: var(--paper);
+    }
+
+    .loader {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+    }
+
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid #dce8e0;
+      border-top-color: var(--forest-2);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    iframe {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: transparent;
+    }
+
+    @media (max-width: 560px) {
+      .brand-mark, .page-sub { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="left">
+      <a class="back-btn" href="./index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Paneles
+      </a>
+
+      <div class="title-wrap">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21V11"/>
+            <path d="M12 14c-5.4 0-8-3.1-8-8 5.5 0 8 2.7 8 8Z"/>
+            <path d="M12 11c0-4.3 2.4-7 7-7 0 4.8-2.4 7-7 7Z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="page-title">Contratistas y Dotación</div>
+          <div class="page-sub">Paracel · Central de Servicios</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="frame-wrap">
+    <div class="loader" id="loader">
+      <div class="spinner"></div>
+      <span>Cargando panel de colaboradores...</span>
+    </div>
+
+    <iframe
+      src="https://script.google.com/macros/s/AKfycbzh1x09uNAsafYldyLPI1ZJ4vcuhQa-Zidxa4mR6IEJZf9HK5jOUTLZODvixQWha1iSrg/exec"
+      title="Panel de Contratistas y Dotación - Paracel"
+      loading="eager"
+      onload="document.getElementById('loader').classList.add('hidden')">
+    </iframe>
+  </main>
+</body>
+</html>
